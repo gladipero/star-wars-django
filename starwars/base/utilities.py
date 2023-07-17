@@ -15,7 +15,7 @@ def initialize_database():
     but can be a periodic running query as well.
     """
     save_movies()
-    # save_planets()
+    save_planets()
 
 
 def fetch_star_wars_data(url):
