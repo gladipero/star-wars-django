@@ -1,0 +1,614 @@
+{
+	"info": {
+		"_postman_id": "8bcd79b8-1214-438d-91ff-25c912a97fc6",
+		"name": "Star Wars",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6661320"
+	},
+	"item": [
+		{
+			"name": "Get Movie List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/movie/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"movie",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Filter on Movie Title",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/movie/?user_id=fd5e6d56-13c2-44e5-8d0d-e9a8c6c1470b&search=hope",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"movie",
+								""
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "fd5e6d56-13c2-44e5-8d0d-e9a8c6c1470b"
+								},
+								{
+									"key": "search",
+									"value": "hope"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 16 Jul 2023 19:11:46 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.9.13"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "229"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"count\": 1,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": \"3bc268c2-4568-4088-8719-e7ee08ee0858\",\n            \"is_favorite\": true,\n            \"updated\": \"2023-07-16 18:36:55\",\n            \"created\": \"2023-07-16 18:36:55\",\n            \"title\": \"A New Hope\",\n            \"release_date\": \"1977-05-25\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Filter if not is_favorite",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/movie/?user_id=fd5e6d56-13c2-44e5-8d0d-e9a8c6c1470b&is_favorite=true",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"movie",
+								""
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "fd5e6d56-13c2-44e5-8d0d-e9a8c6c1470b"
+								},
+								{
+									"key": "is_favorite",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 16 Jul 2023 19:31:17 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.9.13"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "994"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"count\": 5,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": \"f7938f04-a485-4520-947f-c74ad39d095c\",\n            \"is_favorite\": false,\n            \"updated\": \"2023-07-16 18:36:55\",\n            \"created\": \"2023-07-16 18:36:55\",\n            \"title\": \"The Empire Strikes Back\",\n            \"release_date\": \"1980-05-17\"\n        },\n        {\n            \"id\": \"6908d03b-02b1-44f4-be1c-9c7a12646ed2\",\n            \"is_favorite\": false,\n            \"updated\": \"2023-07-16 18:36:55\",\n            \"created\": \"2023-07-16 18:36:55\",\n            \"title\": \"Return of the Jedi\",\n            \"release_date\": \"1983-05-25\"\n        },\n        {\n            \"id\": \"6303cba8-447f-43c7-8c40-74c209fe9d00\",\n            \"is_favorite\": false,\n            \"updated\": \"2023-07-16 18:36:55\",\n            \"created\": \"2023-07-16 18:36:55\",\n            \"title\": \"The Phantom Menace\",\n            \"release_date\": \"1999-05-19\"\n        },\n        {\n            \"id\": \"e21b758f-a787-40f8-95f3-f759ee59bba4\",\n            \"is_favorite\": false,\n            \"updated\": \"2023-07-16 18:36:55\",\n            \"created\": \"2023-07-16 18:36:55\",\n            \"title\": \"Attack of the Clones\",\n            \"release_date\": \"2002-05-16\"\n        },\n        {\n            \"id\": \"8b21432c-7f8c-40ca-b5ef-080b0fadeb4d\",\n            \"is_favorite\": false,\n            \"updated\": \"2023-07-16 18:36:55\",\n            \"created\": \"2023-07-16 18:36:55\",\n            \"title\": \"Revenge of the Sith\",\n            \"release_date\": \"2005-05-19\"\n        }\n    ]\n}"
+				},
+				{
+					"name": "Filter only is_favorite for the user",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/movie/?user_id=fd5e6d56-13c2-44e5-8d0d-e9a8c6c1470b&is_favorite=true",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"movie",
+								""
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "fd5e6d56-13c2-44e5-8d0d-e9a8c6c1470b"
+								},
+								{
+									"key": "is_favorite",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 16 Jul 2023 19:32:19 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.9.13"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "229"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"count\": 1,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": \"3bc268c2-4568-4088-8719-e7ee08ee0858\",\n            \"is_favorite\": true,\n            \"updated\": \"2023-07-16 18:36:55\",\n            \"created\": \"2023-07-16 18:36:55\",\n            \"title\": \"A New Hope\",\n            \"release_date\": \"1977-05-25\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Add or Remove Favorite",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"object_id\": \"3bc268c2-4568-4088-8719-e7ee08ee0858\",\n    \"action\": \"add\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/favorites/update/movie/?user_id=fd5e6d56-13c2-44e5-8d0d-e9a8c6c1470b",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"favorites",
+						"update",
+						"movie",
+						""
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "fd5e6d56-13c2-44e5-8d0d-e9a8c6c1470b"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Remove Favorite for Movie",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"object_id\": \"3bc268c2-4568-4088-8719-e7ee08ee0858\",\n    \"action\": \"remove\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/favorites/update/movie/?user_id=fd5e6d56-13c2-44e5-8d0d-e9a8c6c1470b",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"favorites",
+								"update",
+								"movie",
+								""
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "fd5e6d56-13c2-44e5-8d0d-e9a8c6c1470b"
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 16 Jul 2023 19:37:48 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.9.13"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "42"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": \"Action Successfully Executed.\"\n}"
+				},
+				{
+					"name": "Add favorite for Movie",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"object_id\": \"3bc268c2-4568-4088-8719-e7ee08ee0858\",\n    \"action\": \"add\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/favorites/update/movie/?user_id=fd5e6d56-13c2-44e5-8d0d-e9a8c6c1470b",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"favorites",
+								"update",
+								"movie",
+								""
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "fd5e6d56-13c2-44e5-8d0d-e9a8c6c1470b"
+								}
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 16 Jul 2023 19:41:54 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.9.13"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "42"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": \"Action Successfully Executed.\"\n}"
+				},
+				{
+					"name": "Add Custom Name and Mark as Favorite for Planets",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"object_id\": \"c96150f6-93b1-465c-b215-7b5ded1ac475\",\n    \"action\": \"add\",\n    \"custom_name\": \"Star Trek\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/favorites/update/planet/?user_id=fd5e6d56-13c2-44e5-8d0d-e9a8c6c1470b",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"favorites",
+								"update",
+								"planet",
+								""
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "fd5e6d56-13c2-44e5-8d0d-e9a8c6c1470b"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 17 Jul 2023 17:30:23 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.9.13"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "37"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"detail\": \"Favorite already exists.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Planets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/planets/?user_id=fd5e6d56-13c2-44e5-8d0d-e9a8c6c1470b",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"planets",
+						""
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "search",
+							"value": "coru",
+							"disabled": true
+						},
+						{
+							"key": "user_id",
+							"value": "fd5e6d56-13c2-44e5-8d0d-e9a8c6c1470b"
+						},
+						{
+							"key": "is_favorite",
+							"value": "true",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

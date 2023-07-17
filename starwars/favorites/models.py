@@ -12,4 +12,4 @@ class Favorite(models.Model):
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.UUIDField(default=uuid.uuid4)
     content_object = GenericForeignKey('content_type', 'object_id')
-    custom_name = models.CharField(max_length=255)
+    custom_name = models.CharField(max_length=255, blank=True, default="")

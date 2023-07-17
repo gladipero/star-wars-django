@@ -15,7 +15,7 @@ def initialize_database():
     but can be a periodic running query as well.
     """
     save_movies()
-    save_planets()
+    # save_planets()
 
 
 def fetch_star_wars_data(url):
@@ -99,13 +99,17 @@ def save_objects(url, model_class, serializer_class):
         results = data.get('results', [])
         try:
             normalized_data = normalize_data(results, serializer_class)
+            print(normalized_data)
             objects_to_create = [model_class(**item) for item in normalized_data]
             batch_create_objects(objects_to_create, model_class)
         except ValidationError as e:
             # This can be used to either skip whole initialization if DB already populated 
             # Or can be used to have an updation logic by first querying DB 
             print("validation Error means already done, skipping this import")
+            print(e)
             pass
+        except Exception as e:
+            print(e)
     else:
         print("No data found, Check API")
 

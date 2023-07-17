@@ -9,7 +9,7 @@ from rest_framework.response import Response
 from django.db.models import Q
 
 from planets.models import Planet
-from planets.serializers import PlanetSerializer
+from planets.serializers import PlanetListSerializer
 
 
 class PlanetListAPIView(ListAPIView):
@@ -31,15 +31,17 @@ class PlanetListAPIView(ListAPIView):
                 user_id=user_id,
                 object_id=OuterRef('id')
             )
-        if name:
-            favorites_qs.filter(Q(custom_name__icontains=name) | Q())
+        queryset = self.queryset.annotate(is_favorite=Exists(favorites_qs))
 
+        # Used Generic Relation here to search both name and custom name
+        if name:
+            queryset = queryset.filter(Q(name__icontains=name) | Q(favorite__custom_name__icontains=name))
+        
         if is_favorite is not None:
             if is_favorite not in ["true", "false"]:
                 return Response({"details": "Valid values for is_favorite filter are true and false only."}, status=status.HTTP_400_BAD_REQUEST)
             is_favorite = is_favorite.lower() == 'true'
             queryset = queryset.filter(is_favorite=is_favorite)
-        queryset = self.queryset.annotate(is_favorite=Exists(favorites_qs))
 
         ## Sort has a default so that pagination gives consistent results always.
         queryset = queryset.order_by(sort)
@@ -47,5 +49,5 @@ class PlanetListAPIView(ListAPIView):
     
         paginator = self.pagination_class()
         result_page = paginator.paginate_queryset(queryset, request)
-        movie_serializer = PlanetSerializer(result_page, many=True, context={'user_id': user_id})
+        movie_serializer = PlanetListSerializer(result_page, many=True, context={'user_id': user_id})
         return paginator.get_paginated_response(movie_serializer.data)

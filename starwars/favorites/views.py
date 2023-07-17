@@ -15,6 +15,8 @@ class AddRemoveFavoriteAPIView(APIView):
     def post(self, request, object_type):
         object_id = request.data.get("object_id")
         user_id = request.GET.get("user_id")
+        custom_name = request.data.get("custom_name", "")
+
         if not user_id or not object_id:
             return Response({"details": "User ID and Object ID are a required field"}, status=status.HTTP_400_BAD_REQUEST)
         if object_type == 'movie':
@@ -39,7 +41,7 @@ class AddRemoveFavoriteAPIView(APIView):
                 return Response({'detail': 'Favorite already exists.'}, status=status.HTTP_400_BAD_REQUEST)
 
             # Create a new favorite for the current user and the object
-            Favorite.objects.create(user_id=user_id, content_object=obj)
+            Favorite.objects.create(user_id=user_id, content_object=obj, custom_name=custom_name)
             return Response({'detail': 'Action Successfully Executed.'}, status=status.HTTP_201_CREATED)
 
         elif request.data.get('action') == 'remove':
