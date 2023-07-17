@@ -8,6 +8,7 @@ Currently Supports the following -
 - Utility Management Command which will Query the API and ingest the data into the database.
 - Favorites API which allows a user to set a custom name for every Planet and Movies and to make it as Favorite (Currently custom name is only supported if we mark it as favorite, as wanted to showcase the Annotate, Exists query for the Generic FK.)
 - A search on Movie and Planets List API will also search the custom names and give the relevant results.
+- Postman collection as an example on how to run the APIs supported by the Server.
 
 
 Django and Django Rest Frameworks Concepts Showcased:
@@ -32,4 +33,4 @@ Setup:
 >> python manage.py initialize_database
 7. Start Backend Server
 >> python manage.py runserver
-
+8. The app should now be running at http://127.0.0.1:8000/. You can access the API endpoints and interact with the app through Postman. The Postman JSON is also part of the Codebase.
