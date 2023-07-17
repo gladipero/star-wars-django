@@ -1,6 +1,9 @@
 from django.db import models
 from base.models import BaseModel
 
+from favorites.models import Favorite
+from django.contrib.contenttypes.fields import GenericRelation
+
 class Movie(BaseModel):
     """
     Model Which will store data for all Star Wars Movies, Title is the unique constraint.
@@ -10,6 +13,7 @@ class Movie(BaseModel):
     director = models.CharField(max_length=100) # Stored as a string with 100 as random length for longer full names
     episode_id = models.IntegerField(null=True) #Null added to handle data inconsistencies from source
     opening_crawl = models.TextField() # The opening paragraphs at the beginning of this film.
+    favorite = GenericRelation(Favorite)
 
     #  Following Fields are commented right now and not mapped to minimize the Scope for First Draft.
     #  Producers string -- The name(s) of the producer(s) of this film. Comma separated.

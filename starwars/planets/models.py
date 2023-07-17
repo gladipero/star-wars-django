@@ -1,5 +1,7 @@
 from django.db import models
 from base.models import BaseModel
+from favorites.models import Favorite
+from django.contrib.contenttypes.fields import GenericRelation
 
 class Planet(BaseModel):
     """
@@ -12,7 +14,7 @@ class Planet(BaseModel):
     gravity =models.CharField(max_length=255)
     population = models.CharField(max_length=255)
     climate = models.CharField(max_length=255) # The opening paragraphs at the beginning of this film.
-
+    favorite = GenericRelation(Favorite)
     #  Following Fields are commented right now and not mapped to minimize the Scope of this Assignment
     # climate string -- The climate of this planet. Comma separated if diverse.
     # terrain string -- The terrain of this planet. Comma separated if diverse.

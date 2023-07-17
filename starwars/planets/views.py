@@ -6,6 +6,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.db.models import Exists, OuterRef
 from rest_framework import status
 from rest_framework.response import Response
+from django.db.models import Q
 
 from planets.models import Planet
 from planets.serializers import PlanetSerializer
@@ -31,7 +32,7 @@ class PlanetListAPIView(ListAPIView):
                 object_id=OuterRef('id')
             )
         if name:
-            favorites_qs.filter(custom_name__icontains=name)
+            favorites_qs.filter(Q(custom_name__icontains=name) | Q())
 
         if is_favorite is not None:
             if is_favorite not in ["true", "false"]:
