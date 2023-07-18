@@ -29,7 +29,7 @@ class MovieListAPIView(ListAPIView):
         # Can also be implemented with Custom Filter Backend  
         favorites_qs = Favorite.objects.filter(
                 content_type=ContentType.objects.get_for_model(Movie),
-                user_id=user_id,
+                user_identifier=user_id,
                 object_id=OuterRef('id')
             )
         queryset = self.queryset.annotate(is_favorite=Exists(favorites_qs))

@@ -13,6 +13,6 @@ class MovieFilter(filters.FilterSet):
     def filter_by_favorite(self, queryset, name, value):
         user_id = self.request.query_params.get("user_id", None)
         if user_id:
-            return queryset.filter(favorites__user_id=user_id)
+            return queryset.filter(favorites__user_identifier=user_id)
         else:
             return queryset.none()

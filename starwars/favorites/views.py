@@ -34,14 +34,14 @@ class AddRemoveFavoriteAPIView(APIView):
 
         # Check if the favorite already exists
         content_type=ContentType.objects.get_for_model(model)
-        favorite_exists = Favorite.objects.filter(user_id=user_id, content_type=content_type, object_id=object_id).exists()
+        favorite_exists = Favorite.objects.filter(user_identifier=user_id, content_type=content_type, object_id=object_id).exists()
 
         if request.data.get('action') == 'add':
             if favorite_exists:
                 return Response({'detail': 'Favorite already exists.'}, status=status.HTTP_400_BAD_REQUEST)
 
             # Create a new favorite for the current user and the object
-            Favorite.objects.create(user_id=user_id, content_object=obj, custom_name=custom_name)
+            Favorite.objects.create(user_identifier=user_id, content_object=obj, custom_name=custom_name)
             return Response({'detail': 'Action Successfully Executed.'}, status=status.HTTP_201_CREATED)
 
         elif request.data.get('action') == 'remove':
@@ -49,7 +49,7 @@ class AddRemoveFavoriteAPIView(APIView):
                 return Response({'detail': 'Favorite does not exist.'}, status=status.HTTP_400_BAD_REQUEST)
 
             # Delete the existing favorite
-            Favorite.objects.filter(user_id=user_id, content_type=content_type, object_id=object_id).delete()
+            Favorite.objects.filter(user_identifier=user_id, content_type=content_type, object_id=object_id).delete()
             return Response({'detail': 'Action Successfully Executed.'}, status=status.HTTP_200_OK)
 
         else:

@@ -19,7 +19,7 @@ class PlanetSerializer(serializers.ModelSerializer):
     def get_is_favorite(self, obj):
         user_id = self.context.get('user_id')
         content_type=ContentType.objects.get_for_model(Planet)
-        return Favorite.objects.filter(user_id=user_id, object_id=obj.pk, content_type=content_type).exists()
+        return Favorite.objects.filter(user_identifier=user_id, object_id=obj.pk, content_type=content_type).exists()
     
 class PlanetListSerializer(serializers.ModelSerializer):
     created = serializers.DateTimeField(format='%Y-%m-%d %H:%M:%S', read_only=True)
@@ -35,12 +35,12 @@ class PlanetListSerializer(serializers.ModelSerializer):
     def get_is_favorite(self, obj):
         user_id = self.context.get('user_id')
         content_type=ContentType.objects.get_for_model(Planet)
-        return Favorite.objects.filter(user_id=user_id, object_id=obj.pk, content_type=content_type).exists()
+        return Favorite.objects.filter(user_identifier=user_id, object_id=obj.pk, content_type=content_type).exists()
     
     def get_name(self, obj):
         user_id = self.context.get('user_id')
         content_type=ContentType.objects.get_for_model(Planet)
-        favorite_obj = Favorite.objects.filter(user_id=user_id, object_id=obj.pk, content_type=content_type).first()
+        favorite_obj = Favorite.objects.filter(user_identifier=user_id, object_id=obj.pk, content_type=content_type).first()
         # If Custom Name is there, will respond with that, else Name is returned.
         if favorite_obj and favorite_obj.custom_name:
             return favorite_obj.custom_name
